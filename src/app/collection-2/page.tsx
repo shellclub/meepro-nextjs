@@ -13,7 +13,7 @@ const PageCollection2 = ({}) => {
           {/* HEADING */}
           <div className="max-w-screen-sm">
             <h2 className="block text-2xl sm:text-3xl lg:text-4xl font-semibold">
-              Man collection
+              สินค้าขายดีจากทาง Meepro Pet Shop
             </h2>
             <span className="block mt-4 text-neutral-500 dark:text-neutral-400 text-sm sm:text-base">
               We not only help you design exceptional products, but also make it

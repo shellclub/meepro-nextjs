@@ -180,24 +180,24 @@ const OTHER_PAGE_CHILD: NavItemType[] = [
 export const NAVIGATION_DEMO_2: NavItemType[] = [
   {
     id: ncNanoId(),
-    href: "/collection",
-    name: "Men",
+    href: "/",
+    name: "หน้าแรก",
   },
   {
     id: ncNanoId(),
     href: "/collection-2",
-    name: "Women",
+    name: "สินค้าทั้งหมด",
   },
   {
     id: ncNanoId(),
     href: "/collection",
-    name: "Beauty",
+    name: "สินค้าขายดี",
   },
 
   {
     id: ncNanoId(),
     href: "/collection-2",
-    name: "Sport",
+    name: "แบรนด์",
   },
   {
     id: ncNanoId(),
