@@ -9,40 +9,52 @@ import MySwitch from "@/components/MySwitch";
 // DEMO DATA
 const DATA_categories = [
   {
-    name: "Backpacks",
+    name: "อาหารแมว",
   },
   {
-    name: "Travel Bags",
+    name: "อาหารเสริม",
   },
   {
-    name: "Laptop Sleeves",
+    name: "ขนมแมว",
   },
   {
-    name: "Organization",
+    name: "ของเล่น",
   },
   {
-    name: "Accessories",
+    name: "ที่นอน/คอนโด",
   },
+  { 
+    name: "ห้องน้ำ",
+  },
+];
+const DATA_brand = [
+  { name: "PetAg KMR" },
+  { name: "Absolute Holistic" },
+  { name: "Acana" },
+  { name: "Adaptil" },
+  { name: "Advocate" },
+  { name: "Antinol" },
+  { name: "Deserve" },
 ];
 
-const DATA_colors = [
-  { name: "White" },
-  { name: "Beige" },
-  { name: "Blue" },
-  { name: "Black" },
-  { name: "Brown" },
-  { name: "Green" },
-  { name: "Navy" },
-];
+// const DATA_colors = [
+//   { name: "White" },
+//   { name: "Beige" },
+//   { name: "Blue" },
+//   { name: "Black" },
+//   { name: "Brown" },
+//   { name: "Green" },
+//   { name: "Navy" },
+// ];
 
-const DATA_sizes = [
-  { name: "XS" },
-  { name: "S" },
-  { name: "M" },
-  { name: "L" },
-  { name: "XL" },
-  { name: "2XL" },
-];
+// const DATA_sizes = [
+//   { name: "XS" },
+//   { name: "S" },
+//   { name: "M" },
+//   { name: "L" },
+//   { name: "XL" },
+//   { name: "2XL" },
+// ];
 
 const DATA_sortOrderRadios = [
   { name: "Most Popular", id: "Most-Popular" },
@@ -52,15 +64,16 @@ const DATA_sortOrderRadios = [
   { name: "Price Hight - Low", id: "Price-hight-low" },
 ];
 
-const PRICE_RANGE = [1, 500];
+const PRICE_RANGE = [100, 5000];
 //
 const SidebarFilters = () => {
   //
   const [isOnSale, setIsIsOnSale] = useState(true);
   const [rangePrices, setRangePrices] = useState([100, 500]);
   const [categoriesState, setCategoriesState] = useState<string[]>([]);
-  const [colorsState, setColorsState] = useState<string[]>([]);
-  const [sizesState, setSizesState] = useState<string[]>([]);
+  //const [colorsState, setColorsState] = useState<string[]>([]);
+   const [brandState, setBrandState] = useState<string[]>([]);
+  // const [sizesState, setSizesState] = useState<string[]>([]);
   const [sortOrderStates, setSortOrderStates] = useState<string>("");
 
   //
@@ -70,17 +83,23 @@ const SidebarFilters = () => {
       : setCategoriesState(categoriesState.filter((i) => i !== name));
   };
 
-  const handleChangeColors = (checked: boolean, name: string) => {
-    checked
-      ? setColorsState([...colorsState, name])
-      : setColorsState(colorsState.filter((i) => i !== name));
-  };
+  const handleChangeBrand = (checked: boolean, name: string) => {
+     checked
+       ? setBrandState([...brandState, name])
+       : setBrandState(brandState.filter((i) => i !== name));
+   };
 
-  const handleChangeSizes = (checked: boolean, name: string) => {
-    checked
-      ? setSizesState([...sizesState, name])
-      : setSizesState(sizesState.filter((i) => i !== name));
-  };
+  // const handleChangeColors = (checked: boolean, name: string) => {
+  //   checked
+  //     ? setColorsState([...colorsState, name])
+  //     : setColorsState(colorsState.filter((i) => i !== name));
+  // };
+
+  // const handleChangeSizes = (checked: boolean, name: string) => {
+  //   checked
+  //     ? setSizesState([...sizesState, name])
+  //     : setSizesState(sizesState.filter((i) => i !== name));
+  // };
 
   //
 
@@ -88,7 +107,7 @@ const SidebarFilters = () => {
   const renderTabsCategories = () => {
     return (
       <div className="relative flex flex-col pb-8 space-y-4">
-        <h3 className="font-semibold mb-2.5">Categories</h3>
+        <h3 className="font-semibold mb-2.5">หมวดหมู่สินค้า</h3>
         {DATA_categories.map((item) => (
           <div key={item.name} className="">
             <Checkbox
@@ -105,20 +124,20 @@ const SidebarFilters = () => {
     );
   };
 
-  // OK
-  const renderTabsColor = () => {
+ 
+  const renderTabsBrand = () => {
     return (
       <div className="relative flex flex-col py-8 space-y-4">
-        <h3 className="font-semibold mb-2.5">Colors</h3>
-        {DATA_colors.map((item) => (
+        <h3 className="font-semibold mb-2.5">แบรนด์</h3>
+        {DATA_brand.map((item) => (
           <div key={item.name} className="">
             <Checkbox
               sizeClassName="w-5 h-5"
               labelClassName="text-sm font-normal"
               name={item.name}
               label={item.name}
-              defaultChecked={colorsState.includes(item.name)}
-              onChange={(checked) => handleChangeColors(checked, item.name)}
+              defaultChecked={brandState.includes(item.name)}
+              onChange={(checked) => handleChangeBrand(checked, item.name)}
             />
           </div>
         ))}
@@ -127,32 +146,53 @@ const SidebarFilters = () => {
   };
 
   // OK
-  const renderTabsSize = () => {
-    return (
-      <div className="relative flex flex-col py-8 space-y-4">
-        <h3 className="font-semibold mb-2.5">Sizes</h3>
-        {DATA_sizes.map((item) => (
-          <div key={item.name} className="">
-            <Checkbox
-              name={item.name}
-              label={item.name}
-              defaultChecked={sizesState.includes(item.name)}
-              onChange={(checked) => handleChangeSizes(checked, item.name)}
-              sizeClassName="w-5 h-5"
-              labelClassName="text-sm font-normal"
-            />
-          </div>
-        ))}
-      </div>
-    );
-  };
+  // const renderTabsColor = () => {
+  //   return (
+  //     <div className="relative flex flex-col py-8 space-y-4">
+  //       <h3 className="font-semibold mb-2.5">Colors</h3>
+  //       {DATA_colors.map((item) => (
+  //         <div key={item.name} className="">
+  //           <Checkbox
+  //             sizeClassName="w-5 h-5"
+  //             labelClassName="text-sm font-normal"
+  //             name={item.name}
+  //             label={item.name}
+  //             defaultChecked={colorsState.includes(item.name)}
+  //             onChange={(checked) => handleChangeColors(checked, item.name)}
+  //           />
+  //         </div>
+  //       ))}
+  //     </div>
+  //   );
+  // };
+
+  // OK
+  // const renderTabsSize = () => {
+  //   return (
+  //     <div className="relative flex flex-col py-8 space-y-4">
+  //       <h3 className="font-semibold mb-2.5">Sizes</h3>
+  //       {DATA_sizes.map((item) => (
+  //         <div key={item.name} className="">
+  //           <Checkbox
+  //             name={item.name}
+  //             label={item.name}
+  //             defaultChecked={sizesState.includes(item.name)}
+  //             onChange={(checked) => handleChangeSizes(checked, item.name)}
+  //             sizeClassName="w-5 h-5"
+  //             labelClassName="text-sm font-normal"
+  //           />
+  //         </div>
+  //       ))}
+  //     </div>
+  //   );
+  // };
 
   // OK
   const renderTabsPriceRage = () => {
     return (
       <div className="relative flex flex-col py-8 space-y-5 pr-3">
         <div className="space-y-5">
-          <span className="font-semibold">Price range</span>
+          <span className="font-semibold">ราคา</span>
           <Slider
             range
             min={PRICE_RANGE[0]}
@@ -172,11 +212,11 @@ const SidebarFilters = () => {
               htmlFor="minPrice"
               className="block text-sm font-medium text-neutral-700 dark:text-neutral-300"
             >
-              Min price
+              ต่ำสุด
             </label>
             <div className="mt-1 relative rounded-md">
               <span className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-neutral-500 sm:text-sm">
-                $
+                บาท
               </span>
               <input
                 type="text"
@@ -193,11 +233,11 @@ const SidebarFilters = () => {
               htmlFor="maxPrice"
               className="block text-sm font-medium text-neutral-700 dark:text-neutral-300"
             >
-              Max price
+              สูงสุด
             </label>
             <div className="mt-1 relative rounded-md">
               <span className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-neutral-500 sm:text-sm">
-                $
+                บาท
               </span>
               <input
                 type="text"
@@ -218,7 +258,7 @@ const SidebarFilters = () => {
   const renderTabsSortOrder = () => {
     return (
       <div className="relative flex flex-col py-8 space-y-4">
-        <h3 className="font-semibold mb-2.5">Sort order</h3>
+        <h3 className="font-semibold mb-2.5">เรียงลำดับ</h3>
         {DATA_sortOrderRadios.map((item) => (
           <Radio
             id={item.id}
@@ -238,13 +278,14 @@ const SidebarFilters = () => {
   return (
     <div className="divide-y divide-slate-200 dark:divide-slate-700">
       {renderTabsCategories()}
-      {renderTabsColor()}
-      {renderTabsSize()}
+      {renderTabsBrand()}
+      {/* {renderTabsColor()} */}
+      {/* {renderTabsSize()} */}
       {renderTabsPriceRage()}
       <div className="py-8 pr-2">
         <MySwitch
-          label="On sale!"
-          desc="Products currently on sale"
+          label="ลดราคา"
+          desc="เฉพาะสินค้าลดราคา"
           enabled={isOnSale}
           onChange={setIsIsOnSale}
         />

@@ -202,14 +202,14 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
   {
     id: ncNanoId(),
     href: "/collection",
-    name: "Templates",
+    name: "หมวดหมู่สินค้า",
     type: "megaMenu",
     children: MEGAMENU_TEMPLATES,
   },
   {
     id: ncNanoId(),
     href: "/search",
-    name: "Explore",
+    name: "เกี่ยว",
     type: "dropdown",
     children: OTHER_PAGE_CHILD,
   },

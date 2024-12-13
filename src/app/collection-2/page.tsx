@@ -16,8 +16,7 @@ const PageCollection2 = ({}) => {
               สินค้าขายดีจากทาง Meepro Pet Shop
             </h2>
             <span className="block mt-4 text-neutral-500 dark:text-neutral-400 text-sm sm:text-base">
-              We not only help you design exceptional products, but also make it
-              easy for you to share your designs with more like-minded people.
+             สำหรับหน้าสินค้าขายดี เป็นการคัดเลือกสินค้าที่มียอดขาย มากที่สุดประจำเดือนปัจจุบัน ซึ่งเรานำมาสำเสนอให้ลูกค้าทุ่กท่านที่เข้ามาชมสินค้าผ่านทางเว็บไซต์ของเรา ได้เลือกหากันได้อย่างง่ายดาย
             </span>
           </div>
 
