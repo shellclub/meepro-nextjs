@@ -15,23 +15,23 @@ const pages: {
   link: Route;
 }[] = [
   {
-    name: "Account info",
+    name: "โปรไฟล์ผู้ใช้",
     link: "/account",
   },
   {
-    name: "Save lists",
+    name: "สินค้าที่ชื่อขอบ",
     link: "/account-savelists",
   },
   {
-    name: " My order",
+    name: "ประวัติสั่งซื้อ",
     link: "/account-order",
   },
   {
-    name: "Change password",
+    name: "เปลี่ยนรหัสผ่าน",
     link: "/account-password",
   },
   {
-    name: "Change Billing",
+    name: "การชำระเงิน",
     link: "/account-billing",
   },
 ];
@@ -44,12 +44,12 @@ const CommonLayout: FC<CommonLayoutProps> = ({ children }) => {
       <div className="mt-14 sm:mt-20">
         <div className="max-w-4xl mx-auto">
           <div className="max-w-2xl">
-            <h2 className="text-3xl xl:text-4xl font-semibold">Account</h2>
+            <h2 className="text-3xl xl:text-4xl font-semibold">บัญชีผู้ใช้</h2>
             <span className="block mt-4 text-neutral-500 dark:text-neutral-400 text-base sm:text-lg">
               <span className="text-slate-900 dark:text-slate-200 font-semibold">
-                Enrico Cole,
+                วิโรจน์  แก้วเรือง,
               </span>{" "}
-              ciseco@gmail.com · Los Angeles, CA
+              shellclub@gmail.com · เมืองสุพรรณบุรี, สุพรรณบุรี
             </span>
           </div>
           <hr className="mt-10 border-slate-200 dark:border-slate-700"></hr>

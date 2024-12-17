@@ -1,9 +1,10 @@
 import Label from "@/components/Label/Label";
-import { avatarImgs } from "@/contains/fakeData";
+import React, { FC } from "react";
 import ButtonPrimary from "@/shared/Button/ButtonPrimary";
 import Input from "@/shared/Input/Input";
 import Select from "@/shared/Select/Select";
 import Textarea from "@/shared/Textarea/Textarea";
+import { avatarImgs } from "@/contains/fakeData";
 import Image from "next/image";
 
 const AccountPage = () => {
@@ -12,7 +13,7 @@ const AccountPage = () => {
       <div className="space-y-10 sm:space-y-12">
         {/* HEADING */}
         <h2 className="text-2xl sm:text-3xl font-semibold">
-          ข้อมูลบันชีผู้ใช้
+          ข้อมูลบัญชี
         </h2>
         <div className="flex flex-col md:flex-row">
           <div className="flex-shrink-0 flex items-start">
@@ -42,7 +43,7 @@ const AccountPage = () => {
                   />
                 </svg>
 
-                <span className="mt-1 text-xs">Change Image</span>
+                <span className="mt-1 text-xs">เปลี่ยนรูปโปรไฟล์</span>
               </div>
               <input
                 type="file"
@@ -52,7 +53,7 @@ const AccountPage = () => {
           </div>
           <div className="flex-grow mt-10 md:mt-0 md:pl-16 max-w-3xl space-y-6">
             <div>
-              <Label>Full name</Label>
+              <Label>ชื่อ-นามสกุล</Label>
               <Input className="mt-1.5" defaultValue="Enrico Cole" />
             </div>
 
@@ -60,7 +61,7 @@ const AccountPage = () => {
 
             {/* ---- */}
             <div>
-              <Label>Email</Label>
+              <Label>อีเมล์</Label>
               <div className="mt-1.5 flex">
                 <span className="inline-flex items-center px-2.5 rounded-l-2xl border border-r-0 border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 text-sm">
                   <i className="text-2xl las la-envelope"></i>
@@ -74,7 +75,7 @@ const AccountPage = () => {
 
             {/* ---- */}
             <div className="max-w-lg">
-              <Label>Date of birth</Label>
+              <Label>วัน เดือน ปีเกิด</Label>
               <div className="mt-1.5 flex">
                 <span className="inline-flex items-center px-2.5 rounded-l-2xl border border-r-0 border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 text-sm">
                   <i className="text-2xl las la-calendar"></i>
@@ -88,7 +89,7 @@ const AccountPage = () => {
             </div>
             {/* ---- */}
             <div>
-              <Label>ที่อยู่ปัจจุบัน</Label>
+              <Label>ที่อยู่</Label>
               <div className="mt-1.5 flex">
                 <span className="inline-flex items-center px-2.5 rounded-l-2xl border border-r-0 border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 text-sm">
                   <i className="text-2xl las la-map-signs"></i>
@@ -102,7 +103,7 @@ const AccountPage = () => {
 
             {/* ---- */}
             <div>
-              <Label>Gender</Label>
+              <Label>เพศ</Label>
               <Select className="mt-1.5">
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
@@ -112,7 +113,7 @@ const AccountPage = () => {
 
             {/* ---- */}
             <div>
-              <Label>Phone number</Label>
+              <Label>หมายเลขโทรศัพท์</Label>
               <div className="mt-1.5 flex">
                 <span className="inline-flex items-center px-2.5 rounded-l-2xl border border-r-0 border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 text-sm">
                   <i className="text-2xl las la-phone-volume"></i>
@@ -122,11 +123,11 @@ const AccountPage = () => {
             </div>
             {/* ---- */}
             <div>
-              <Label>About you</Label>
+              <Label>แนะนำตนเอง</Label>
               <Textarea className="mt-1.5" defaultValue="..." />
             </div>
             <div className="pt-2">
-              <ButtonPrimary>Update account</ButtonPrimary>
+              <ButtonPrimary>เปลี่ยนแปลงข้อมูลบัญชี</ButtonPrimary>
             </div>
           </div>
         </div>

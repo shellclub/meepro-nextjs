@@ -204,9 +204,9 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 7,
-    name: "Wool Cashmere Jacket",
-    description: "Matte black",
-    price: 12,
+    name: "Felix Kitten Pouch",
+    description: "85g.x6ซอง",
+    price: 190,
     image: productImgs[8],
     category: "Category 1",
     tags: ["tag1", "tag2"],

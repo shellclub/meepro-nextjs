@@ -78,7 +78,7 @@ const SectionSliderProductCard: FC<SectionSliderProductCardProps> = ({
           rightDescText={subHeading}
           hasNextPrev
         >
-          {heading || `New Arrivals`}
+          {heading || `สินค้าเข้าใหม่`}
         </Heading>
         <div className="glide__track" data-glide-el="track">
           <ul className="glide__slides">
