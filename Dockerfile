@@ -1,25 +1,23 @@
-# Dockerfile
-# ใช้ Node.js เวอร์ชันล่าสุดเป็น base image
+# ใช้ภาพพื้นฐาน
 FROM node:20-alpine
 
-# ตั้งค่า working directory
+# ตั้งค่าไดเรกทอรีทำงาน
 WORKDIR /app
 
-# คัดลอกไฟล์ package.json และ package-lock.json
-COPY package*.json ./
+# คัดลอกไฟล์ package.json และ lock file
+COPY package.json package-lock.json ./  
 
 # ติดตั้ง dependencies
 RUN npm install
 
-
-# คัดลอกโค้ดทั้งหมดไปยัง container
+# คัดลอกไฟล์โค้ดทั้งหมด
 COPY . .
 
-# สร้าง build สำหรับโปรเจค Next.js
+# สร้างแอป
 RUN npm run build
 
 # เปิดพอร์ต 3000
 EXPOSE 3000
 
-# รันโปรเจค
-CMD ["npm", "run", "start"]
+# คำสั่งรันแอป
+CMD ["npm", "run", "production"]
