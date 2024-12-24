@@ -10,6 +10,7 @@ interface Props {
   variantActive: number;
   sizeSelected: string;
   qualitySelected: number;
+
 }
 
 const NotifyAddTocart: FC<Props> = ({

@@ -49,7 +49,7 @@ const ProductCard: FC<ProductCardProps> = ({
 
   const notifyAddTocart = ({ size }: { size?: string }) => {
     toast.custom(
-      (t) => (
+      (t:any) => (
         <Transition
           as={"div"}
           appear
@@ -217,22 +217,22 @@ const ProductCard: FC<ProductCardProps> = ({
     return (
       <div className="absolute bottom-0 group-hover:bottom-4 inset-x-1 flex justify-center opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
         <ButtonPrimary
-          className="shadow-lg"
+          className="shadow-lg w-32"
           fontSize="text-xs"
           sizeClass="py-2 px-4"
           onClick={() => notifyAddTocart({ size: "XL" })}
         >
           <BagIcon className="w-3.5 h-3.5 mb-0.5" />
-          <span className="ms-1">Add to bag</span>
+          <span className="ms-1">ขาย</span>
         </ButtonPrimary>
         <ButtonSecondary
-          className="ms-1.5 bg-white hover:!bg-gray-100 hover:text-slate-900 transition-colors shadow-lg"
+          className="ms-1.5 w-32 bg-white hover:!bg-gray-100 hover:text-slate-900 transition-colors shadow-lg"
           fontSize="text-xs"
           sizeClass="py-2 px-4"
           onClick={() => setShowModalQuickView(true)}
         >
           <ArrowsPointingOutIcon className="w-3.5 h-3.5" />
-          <span className="ms-1">Quick view</span>
+          <span className="ms-1">ซื้อ</span>
         </ButtonSecondary>
       </div>
     );

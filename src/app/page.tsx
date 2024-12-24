@@ -29,7 +29,7 @@ function PageHome() {
       <div className="container relative space-y-24 my-24 lg:space-y-32 lg:my-32">
         <SectionSliderProductCard
           data={[
-            PRODUCTS[4],
+            PRODUCTS[3],
             SPORT_PRODUCTS[5],
             PRODUCTS[7],
             SPORT_PRODUCTS[1],

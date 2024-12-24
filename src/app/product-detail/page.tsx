@@ -42,7 +42,7 @@ const ProductDetailPage = () => {
   //
   const notifyAddTocart = () => {
     toast.custom(
-      (t) => (
+      (t: any) => (
         <NotifyAddTocart
           productImage={image}
           qualitySelected={qualitySelected}

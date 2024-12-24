@@ -1,23 +1,32 @@
-# ใช้ภาพพื้นฐาน
-FROM node:20-alpine
+# Use the official Node.js image as the base image
+FROM node:18-alpine AS builder
 
-# ตั้งค่าไดเรกทอรีทำงาน
+# Set working directory
 WORKDIR /app
 
-# คัดลอกไฟล์ package.json และ lock file
-COPY package.json package-lock.json ./  
-
-# ติดตั้ง dependencies
+# Copy package files and install dependencies
+COPY package.json package-lock.json ./
 RUN npm install
 
-# คัดลอกไฟล์โค้ดทั้งหมด
+# Copy the rest of the application code
 COPY . .
 
-# สร้างแอป
+# Build the Next.js application
 RUN npm run build
 
-# เปิดพอร์ต 3000
+# Use a minimal image to serve the built app
+FROM node:18-alpine AS runner
+
+# Set working directory
+WORKDIR /app
+
+# Copy built files from builder
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+
+# Expose the port
 EXPOSE 3000
 
-# คำสั่งรันแอป
-CMD ["npm", "run", "production"]
+# Start the application
+CMD ["npm", "start"]

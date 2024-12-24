@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, RefObject, useEffect, useRef, useState } from "react";
 import backgroundLineSvg from "@/images/Moon.svg";
 import ButtonPrimary from "@/shared/Button/ButtonPrimary";
 import Image from "next/image";
@@ -17,7 +17,8 @@ const SectionHero2: FC<SectionHero2Props> = ({ className = "" }) => {
   // =================
 
   const ref = useRef<HTMLDivElement>(null);
-  const swipeState = useHorizontalSwipe(ref, {
+  
+  const swipeState = useHorizontalSwipe(ref as RefObject<HTMLElement>, {
     threshold: 100,
     preventDefault: false,
     passive: true,
