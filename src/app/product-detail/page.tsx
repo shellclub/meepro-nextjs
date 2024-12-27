@@ -207,6 +207,26 @@ const ProductDetailPage = () => {
             Heavy Weight Shoes
           </h2>
 
+
+
+          <div className="flex items-center mt-5 space-x-4 sm:space-x-5">
+          <Prices
+              contentClass="py-1 px-2 md:py-1.5 md:px-3 text-lg font-semibold"
+              price={112}
+            />
+
+
+            <div className="h-7 border-l border-slate-300 dark:border-slate-700"></div>
+
+            <Prices
+              contentClass="py-1 px-2 md:py-1.5 md:px-3 text-lg font-semibold"
+              price={112}
+            />
+          </div>
+          <div className="flex items-center mt-5 space-x-4 sm:space-x-5">
+            
+            </div>
+
           <div className="flex items-center mt-5 space-x-4 sm:space-x-5">
             {/* <div className="flex text-xl font-semibold">$112.00</div> */}
             <Prices
@@ -214,7 +234,15 @@ const ProductDetailPage = () => {
               price={112}
             />
 
-            <div className="h-7 border-l border-slate-300 dark:border-slate-700"></div>
+
+            <div className="h-7 border-l border-slate-300 dark:border-slate-700">
+             
+            </div>
+
+            <Prices
+              contentClass="py-1 px-2 md:py-1.5 md:px-3 text-lg font-semibold"
+              price={112}
+            />
 
             <div className="flex items-center">
               <a
@@ -256,7 +284,7 @@ const ProductDetailPage = () => {
             onClick={notifyAddTocart}
           >
             <BagIcon className="hidden sm:inline-block w-5 h-5 mb-0.5" />
-            <span className="ml-3">Add to cart</span>
+            <span className="ml-3">ตั้งราคารับซื้อ</span>
           </ButtonPrimary>
         </div>
 
