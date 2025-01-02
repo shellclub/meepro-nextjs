@@ -6,6 +6,7 @@ import { StarIcon } from "@heroicons/react/24/solid";
 import BagIcon from "@/components/BagIcon";
 import NcInputNumber from "@/components/NcInputNumber";
 import { PRODUCTS } from "@/data/data";
+
 import {
   NoSymbolIcon,
   ClockIcon,
@@ -18,7 +19,7 @@ import detail1JPG from "@/images/products/detail1.jpg";
 import detail2JPG from "@/images/products/detail2.jpg";
 import detail3JPG from "@/images/products/detail3.jpg";
 import NotifyAddTocart from "./NotifyAddTocart";
-import AccordionInfo from "@/components/AccordionInfo";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -27,11 +28,12 @@ export interface ProductQuickViewProps {
 }
 
 const ProductQuickView: FC<ProductQuickViewProps> = ({ className = "" }) => {
-  const { sizes, variants, status, allOfSizes } = PRODUCTS[0];
+  const { sizes, variants, status, allOfSizes, allOfDay, days } = PRODUCTS[0];
   const LIST_IMAGES_DEMO = [detail1JPG, detail2JPG, detail3JPG];
 
   const [variantActive, setVariantActive] = useState(0);
   const [sizeSelected, setSizeSelected] = useState(sizes ? sizes[0] : "");
+  const [daySelected, setDaySelected] = useState(days ? days[0] : "");
   const [qualitySelected, setQualitySelected] = useState(1);
 
   const notifyAddTocart = () => {
@@ -91,6 +93,61 @@ const ProductQuickView: FC<ProductQuickViewProps> = ({ className = "" }) => {
               ></div>
             </div>
           ))}
+        </div>
+      </div>
+    );
+  };
+
+  const renderDayList = () => {
+    if (!allOfDay || !days || !days.length) {
+      return null;
+    }
+    return (
+      <div>
+        <div className="flex justify-between font-medium text-sm">
+          <label htmlFor="">
+            <span className="">
+              ระยะเวลาตั้งรับซื้อ:
+              <span className="ms-1 font-semibold">{daySelected}</span>
+            </span>
+          </label>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="##"
+            className="text-primary-6000 hover:text-primary-500"
+          >
+            ค่าเริ่มต้นรับซื้ออย่างน้อย 1 วัน
+          </a>
+        </div>
+        <div className="grid grid-cols-5 sm:grid-cols-7 gap-2 mt-2.5">
+          {allOfDay.map((days, index) => {
+            const isActive = days === daySelected;
+            const dayOutStock = !days.includes(days);
+            return (
+              <div
+                key={index}
+                className={`relative h-10 sm:h-11 rounded-2xl border flex items-center justify-center 
+                text-sm sm:text-base uppercase font-semibold select-none overflow-hidden z-0 ${
+                  dayOutStock
+                    ? "text-opacity-20 dark:text-opacity-20 cursor-not-allowed"
+                    : "cursor-pointer"
+                } ${
+                  isActive
+                    ? "bg-primary-6000 border-primary-6000 text-white hover:bg-primary-6000"
+                    : "border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-200 hover:bg-neutral-50 dark:hover:bg-neutral-700"
+                }`}
+                onClick={() => {
+                  if (dayOutStock) {
+                    return;
+                  }
+                  setDaySelected(days);
+                }}
+              >
+                {days}
+              </div>
+            );
+          })}
         </div>
       </div>
     );
@@ -205,7 +262,7 @@ const ProductQuickView: FC<ProductQuickViewProps> = ({ className = "" }) => {
             {/* <div className="flex text-xl font-semibold">$112.00</div> */}
             <Prices
               contentClass="py-1 px-2 md:py-1.5 md:px-3 text-lg font-semibold"
-              price={112}
+              price={2000}
             />
 
             <div className="h-6 border-s border-slate-300 dark:border-slate-700"></div>
@@ -237,6 +294,19 @@ const ProductQuickView: FC<ProductQuickViewProps> = ({ className = "" }) => {
         <div className="">{renderVariants()}</div>
         <div className="">{renderSizeList()}</div>
 
+      
+        <div className="flex flex-col">
+          <div className="mt-5 text-center">คุณกำลังตั้งรับซื้อสินค้าในราคา</div>
+         
+          <div className="text-5lx">
+            <input className="mt-1 py-5 bg-white text-center rounded-md p-2  focus:ring-sky-500 block w-full rounded-md sm:text-5xl focus:ring-1 border-none" placeholder="กรอกราคา" type="number" name="bidInput"/>
+          </div>
+          <div className="text-sm text-center">
+            <p className="">ราคาตั้งรับซื้อขั้นต่ำ ฿ 1,000</p></div>         
+        </div>
+                
+
+
         {/*  ---------- 4  QTY AND ADD TO CART BUTTON */}
         <div className="flex space-x-3.5 rtl:space-x-reverse">
           <div className="flex items-center justify-center bg-slate-100/70 dark:bg-slate-800/70 px-2 py-3 sm:p-3.5 rounded-full">
@@ -245,44 +315,21 @@ const ProductQuickView: FC<ProductQuickViewProps> = ({ className = "" }) => {
               onChange={setQualitySelected}
             />
           </div>
+          {/* ปุ่ม ซื้อ */}
           <ButtonPrimary
             className="flex-1 flex-shrink-0"
             onClick={notifyAddTocart}
           >
             <BagIcon className="hidden sm:inline-block w-5 h-5 mb-0.5" />
-            <span className="ms-3">Add to cart</span>
+            <span className="ms-3">ตั้งราคาซื้อ</span>
           </ButtonPrimary>
         </div>
 
         {/*  */}
         <hr className=" border-slate-200 dark:border-slate-700"></hr>
         {/*  */}
-
-        {/* ---------- 5 ----------  */}
-        <AccordionInfo
-          data={[
-            {
-              name: "Description",
-              content:
-                "Fashion is a form of self-expression and autonomy at a particular period and place and in a specific context, of clothing, footwear, lifestyle, accessories, makeup, hairstyle, and body posture.",
-            },
-            {
-              name: "Features",
-              content: `<ul class="list-disc list-inside leading-7">
-            <li>Material: 43% Sorona Yarn + 57% Stretch Polyester</li>
-            <li>
-             Casual pants waist with elastic elastic inside
-            </li>
-            <li>
-              The pants are a bit tight so you always feel comfortable
-            </li>
-            <li>
-              Excool technology application 4-way stretch
-            </li>
-          </ul>`,
-            },
-          ]}
-        />
+        
+        <div className="">{renderDayList()}</div>
       </div>
     );
   };

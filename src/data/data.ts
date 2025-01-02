@@ -38,6 +38,8 @@ export interface Product {
   variantType?: "color" | "image";
   sizes?: string[];
   allOfSizes?: string[];
+  allOfDay?: string[];
+  days?: string[];
   status?: "New in" | "limited edition" | "Sold Out" | "50% Discount";
   rating?: string;
   numberOfReviews?: number;
@@ -121,7 +123,9 @@ export const PRODUCTS: Product[] = [
     variants: DEMO_VARIANTS,
     variantType: "image",
     sizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
+    days: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     allOfSizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
+    allOfDay: ["1 วัน", "3 วัน", "7 วัน", "15 วัน", "30 วัน"],
     status: "New in",
     rating: "4.4",
     numberOfReviews: 98,
@@ -153,7 +157,9 @@ export const PRODUCTS: Product[] = [
     variants: DEMO_VARIANTS,
     variantType: "image",
     sizes: ["S", "M", "L", "XL"],
+    days: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     allOfSizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+    allOfDay: ["1 วัน", "3 วัน", "7 วัน", "15 วัน", "30 วัน"],
     rating: "4.9",
     numberOfReviews: 98,
   },
@@ -183,7 +189,9 @@ export const PRODUCTS: Product[] = [
     variants: DEMO_VARIANTS,
     variantType: "image",
     sizes: ["XS", "S", "M", "L", "XL"],
+    days: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     allOfSizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
+    allOfDay: ["1 วัน", "3 วัน", "7 วัน", "15 วัน", "30 วัน"],
     link: "/product-detail/",
     rating: "4.9",
     numberOfReviews: 98,
@@ -247,7 +255,9 @@ export const SPORT_PRODUCTS: Product[] = [
     variants: DEMO_VARIANT_COLORS,
     variantType: "color",
     sizes: ["XS", "S", "M", "L", "XL"],
+    days: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
     allOfSizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
+    allOfDay: ["1 วัน", "3 วัน", "7 วัน", "15 วัน", "30 วัน"],
     status: "New in",
     rating: "4.9",
     numberOfReviews: 98,
@@ -280,6 +290,7 @@ export const SPORT_PRODUCTS: Product[] = [
     variantType: "image",
     sizes: ["S", "M", "L", "XL"],
     allOfSizes: ["S", "M", "L", "XL", "2XL", "3XL"],
+    allOfDay: ["1 วัน", "3 วัน", "7 วัน", "15 วัน", "30 วัน"],
     rating: "4.9",
     numberOfReviews: 98,
   },
@@ -310,6 +321,7 @@ export const SPORT_PRODUCTS: Product[] = [
     variantType: "image",
     sizes: ["XS", "S", "M", "L", "XL"],
     allOfSizes: ["XS", "S", "M", "L", "XL", "2XL", "3XL"],
+    allOfDay: ["1 วัน", "3 วัน", "7 วัน", "15 วัน", "30 วัน"],
     link: "/product-detail/",
     rating: "4.9",
     numberOfReviews: 98,

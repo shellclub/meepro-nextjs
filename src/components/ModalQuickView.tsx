@@ -5,6 +5,7 @@ import React, { FC, Fragment } from "react";
 import ButtonClose from "@/shared/ButtonClose/ButtonClose";
 import ProductQuickView from "./ProductQuickView";
 import ProductQuickView2 from "./ProductQuickView2";
+import ProductChartBid from "./ProductChartBid";
 import { usePathname } from "next/navigation";
 
 export interface ModalQuickViewProps {
@@ -62,7 +63,7 @@ const ModalQuickView: FC<ModalQuickViewProps> = ({
                   {pathname.includes("/home-2") ? (
                     <ProductQuickView2 />
                   ) : (
-                    <ProductQuickView />
+                    <ProductChartBid />
                   )}
                 </div>
               </div>

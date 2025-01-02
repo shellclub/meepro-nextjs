@@ -217,7 +217,7 @@ const ProductCard: FC<ProductCardProps> = ({
     return (
       <div className="absolute bottom-0 group-hover:bottom-4 inset-x-1 flex justify-center opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all">
         <ButtonPrimary
-          className="shadow-lg w-32"
+          className="shadow-lg"
           fontSize="text-xs"
           sizeClass="py-2 px-4"
           onClick={() => notifyAddTocart({ size: "XL" })}
@@ -226,7 +226,7 @@ const ProductCard: FC<ProductCardProps> = ({
           <span className="ms-1">ขาย</span>
         </ButtonPrimary>
         <ButtonSecondary
-          className="ms-1.5 w-32 bg-white hover:!bg-gray-100 hover:text-slate-900 transition-colors shadow-lg"
+          className="ms-1.5 bg-white hover:!bg-gray-100 hover:text-slate-900 transition-colors shadow-lg"
           fontSize="text-xs"
           sizeClass="py-2 px-4"
           onClick={() => setShowModalQuickView(true)}

@@ -27,6 +27,8 @@ import ModalViewAllReviews from "./ModalViewAllReviews";
 import NotifyAddTocart from "@/components/NotifyAddTocart";
 import Image from "next/image";
 import AccordionInfo from "@/components/AccordionInfo";
+import ModalQuickView from "@/components/ModalQuickView";
+import ButtonBid from "@/shared/Button/ButtonBid";
 
 const LIST_IMAGES_DEMO = [detail1JPG, detail2JPG, detail3JPG];
 
@@ -38,6 +40,7 @@ const ProductDetailPage = () => {
   const [qualitySelected, setQualitySelected] = useState(1);
   const [isOpenModalViewAllReviews, setIsOpenModalViewAllReviews] =
     useState(false);
+    const [showModalQuickView, setShowModalQuickView] = useState(false);
 
   //
   const notifyAddTocart = () => {
@@ -64,7 +67,7 @@ const ProductDetailPage = () => {
       <div>
         <label htmlFor="">
           <span className="text-sm font-medium">
-            Color:
+            สี:
             <span className="ml-1 font-semibold">
               {variants[variantActive].name}
             </span>
@@ -111,7 +114,7 @@ const ProductDetailPage = () => {
         <div className="flex justify-between font-medium text-sm">
           <label htmlFor="">
             <span className="">
-              Size:
+              ขนาด:
               <span className="ml-1 font-semibold">{sizeSelected}</span>
             </span>
           </label>
@@ -121,7 +124,7 @@ const ProductDetailPage = () => {
             href="##"
             className="text-primary-6000 hover:text-primary-500"
           >
-            See sizing chart
+            ตารางเปรียบเทียบขนาด
           </a>
         </div>
         <div className="grid grid-cols-5 sm:grid-cols-7 gap-2 mt-3">
@@ -208,25 +211,6 @@ const ProductDetailPage = () => {
           </h2>
 
 
-
-          <div className="flex items-center mt-5 space-x-4 sm:space-x-5">
-          <Prices
-              contentClass="py-1 px-2 md:py-1.5 md:px-3 text-lg font-semibold"
-              price={112}
-            />
-
-
-            <div className="h-7 border-l border-slate-300 dark:border-slate-700"></div>
-
-            <Prices
-              contentClass="py-1 px-2 md:py-1.5 md:px-3 text-lg font-semibold"
-              price={112}
-            />
-          </div>
-          <div className="flex items-center mt-5 space-x-4 sm:space-x-5">
-            
-            </div>
-
           <div className="flex items-center mt-5 space-x-4 sm:space-x-5">
             {/* <div className="flex text-xl font-semibold">$112.00</div> */}
             <Prices
@@ -244,7 +228,7 @@ const ProductDetailPage = () => {
               price={112}
             />
 
-            <div className="flex items-center">
+              <div className="flex items-center">
               <a
                 href="#reviews"
                 className="flex items-center text-sm font-medium"
@@ -266,28 +250,56 @@ const ProductDetailPage = () => {
             </div>
           </div>
         </div>
-
+        <div className="bg-white py-2 sm:py-8">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <dl className="grid grid-cols-3 gap-x-8 gap-y-16 text-center lg:grid-cols-3">          
+            <div  className="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt className="text-base/7 text-left text-gray-600">ราคาเริ่มต้น</dt>
+              <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-xl">
+              ฿​ 2,000
+              </dd>
+            </div>  
+            <div  className="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt className="text-base/7 text-left text-gray-600">ราคาสูงสุด</dt>
+              <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-xl">
+              ฿​  2,310
+              </dd>
+            </div>  
+            <div  className="mx-auto flex max-w-xs flex-col gap-y-4">
+              <dt className="text-base/7 text-left text-gray-600">ราคาขายล่าสุด</dt>
+              <dd className="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-xl">
+              ฿​ 2,200
+              </dd>
+            </div>     
+        </dl>
+      </div>
+      
+    </div>
+    <hr className=" 2xl:!my-10 border-slate-200 dark:border-slate-700"></hr>
         {/* ---------- 3 VARIANTS AND SIZE LIST ----------  */}
         <div className="">{renderVariants()}</div>
         <div className="">{renderSizeList()}</div>
 
         {/*  ---------- 4  QTY AND ADD TO CART BUTTON */}
         <div className="flex space-x-3.5">
-          <div className="flex items-center justify-center bg-slate-100/70 dark:bg-slate-800/70 px-2 py-3 sm:p-3.5 rounded-full">
-            <NcInputNumber
-              defaultValue={qualitySelected}
-              onChange={setQualitySelected}
-            />
-          </div>
-          <ButtonPrimary
+                 
+        </div>
+        <div className="flex space-x-3.5"> 
+        <ButtonPrimary
             className="flex-1 flex-shrink-0"
             onClick={notifyAddTocart}
           >
             <BagIcon className="hidden sm:inline-block w-5 h-5 mb-0.5" />
+            <span className="ml-3">ตั้งราคาขาย</span>
+          </ButtonPrimary> 
+          <ButtonBid
+            className="flex-1 flex-shrink-0"
+            onClick={() => setShowModalQuickView(true)}
+          >
+            <BagIcon className="hidden sm:inline-block  w-5 h-5 mb-0.5" />
             <span className="ml-3">ตั้งราคารับซื้อ</span>
-          </ButtonPrimary>
+          </ButtonBid>
         </div>
-
         {/*  */}
         <hr className=" 2xl:!my-10 border-slate-200 dark:border-slate-700"></hr>
         {/*  */}
@@ -467,6 +479,10 @@ const ProductDetailPage = () => {
       <ModalViewAllReviews
         show={isOpenModalViewAllReviews}
         onCloseModalViewAllReviews={() => setIsOpenModalViewAllReviews(false)}
+      />
+      <ModalQuickView
+        show={showModalQuickView}
+        onCloseModalQuickView={() => setShowModalQuickView(false)}
       />
     </div>
   );
