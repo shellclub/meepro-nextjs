@@ -1,0 +1,410 @@
+"use client";
+import React, { FC, useState } from "react";
+import ButtonPrimary from "@/shared/Button/ButtonPrimary";
+import LikeButton from "@/components/LikeButton";
+import { StarIcon } from "@heroicons/react/24/solid";
+import BagIcon from "@/components/BagIcon";
+import NcInputNumber from "@/components/NcInputNumber";
+import { PRODUCTS } from "@/data/data";
+
+import {
+  NoSymbolIcon,
+  ClockIcon,
+  SparklesIcon,
+} from "@heroicons/react/24/outline";
+import IconDiscount from "@/components/IconDiscount";
+import Prices from "@/components/Prices";
+import toast from "react-hot-toast";
+import detail1JPG from "@/images/products/detail1.jpg";
+import detail2JPG from "@/images/products/detail2.jpg";
+import detail3JPG from "@/images/products/detail3.jpg";
+import NotifyAddTocart from "./NotifyAddTocart";
+
+import Image from "next/image";
+import Link from "next/link";
+
+export interface ProductQuickViewProps {
+  className?: string;
+}
+
+const ProductQuickView: FC<ProductQuickViewProps> = ({ className = "" }) => {
+  const { sizes, variants, status, allOfSizes, allOfDay, days } = PRODUCTS[0];
+  const LIST_IMAGES_DEMO = [detail1JPG, detail2JPG, detail3JPG];
+
+  const [variantActive, setVariantActive] = useState(0);
+  const [sizeSelected, setSizeSelected] = useState(sizes ? sizes[0] : "");
+  const [daySelected, setDaySelected] = useState(days ? days[0] : "");
+  const [qualitySelected, setQualitySelected] = useState(1);
+
+  const notifyAddTocart = () => {
+    toast.custom(
+      (t: any) => (
+        <NotifyAddTocart
+          productImage={LIST_IMAGES_DEMO[0]}
+          qualitySelected={qualitySelected}
+          show={t.visible}
+          sizeSelected={sizeSelected}
+          variantActive={variantActive}
+        />
+      ),
+      { position: "top-right", id: "nc-product-notify", duration: 3000 }
+    );
+  };
+
+  const renderVariants = () => {
+    if (!variants || !variants.length) {
+      return null;
+    }
+
+    return (
+      <div>
+        <label className="rtl:text-right block" htmlFor="">
+          <span className="text-sm font-medium">
+            Color:
+            <span className="ms-1 font-semibold">
+              {variants[variantActive].name}
+            </span>
+          </span>
+        </label>
+        <div className="flex mt-2.5">
+          {variants.map((variant, index) => (
+            <div
+              key={index}
+              onClick={() => setVariantActive(index)}
+              className={`relative flex-1 max-w-[75px] h-10 rounded-full border-2 cursor-pointer ${
+                variantActive === index
+                  ? "border-primary-6000 dark:border-primary-500"
+                  : "border-transparent"
+              }`}
+            >
+              <div
+                className="absolute inset-0.5 rounded-full overflow-hidden z-0 bg-cover"
+                style={{
+                  backgroundImage: `url(${
+                    // @ts-ignore
+                    typeof variant.thumbnail?.src === "string"
+                      ? // @ts-ignore
+                        variant.thumbnail?.src
+                      : typeof variant.thumbnail === "string"
+                      ? variant.thumbnail
+                      : ""
+                  })`,
+                }}
+              ></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
+  const renderDayList = () => {
+    if (!allOfDay || !days || !days.length) {
+      return null;
+    }
+    return (
+      <div>
+        <div className="flex justify-between font-medium text-sm">
+          <label htmlFor="">
+            <span className="">
+              ระยะเวลาตั้งขาย:
+              <span className="ms-1 font-semibold">{daySelected}</span>
+            </span>
+          </label>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="##"
+            className="text-primary-6000 hover:text-primary-500"
+          >
+            ค่าเริ่มต้นตั้งขายอย่างน้อย 1 วัน
+          </a>
+        </div>
+        <div className="grid grid-cols-5 sm:grid-cols-7 gap-2 mt-2.5">
+          {allOfDay.map((days, index) => {
+            const isActive = days === daySelected;
+            const dayOutStock = !days.includes(days);
+            return (
+              <div
+                key={index}
+                className={`relative h-10 sm:h-11 rounded-2xl border flex items-center justify-center 
+                text-sm sm:text-base uppercase font-semibold select-none overflow-hidden z-0 ${
+                  dayOutStock
+                    ? "text-opacity-20 dark:text-opacity-20 cursor-not-allowed"
+                    : "cursor-pointer"
+                } ${
+                  isActive
+                    ? "bg-primary-6000 border-primary-6000 text-white hover:bg-primary-6000"
+                    : "border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-200 hover:bg-neutral-50 dark:hover:bg-neutral-700"
+                }`}
+                onClick={() => {
+                  if (dayOutStock) {
+                    return;
+                  }
+                  setDaySelected(days);
+                }}
+              >
+                {days}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
+
+  const renderSizeList = () => {
+    if (!allOfSizes || !sizes || !sizes.length) {
+      return null;
+    }
+    return (
+      <div>
+        <div className="flex justify-between font-medium text-sm">
+          <label htmlFor="">
+            <span className="">
+              Size:
+              <span className="ms-1 font-semibold">{sizeSelected}</span>
+            </span>
+          </label>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="##"
+            className="text-primary-6000 hover:text-primary-500"
+          >
+            ตารางเปรียบเทียบขนาด
+          </a>
+        </div>
+        <div className="grid grid-cols-5 sm:grid-cols-7 gap-2 mt-2.5">
+          {allOfSizes.map((size, index) => {
+            const isActive = size === sizeSelected;
+            const sizeOutStock = !sizes.includes(size);
+            return (
+              <div
+                key={index}
+                className={`relative h-10 sm:h-11 rounded-2xl border flex items-center justify-center 
+                text-sm sm:text-base uppercase font-semibold select-none overflow-hidden z-0 ${
+                  sizeOutStock
+                    ? "text-opacity-20 dark:text-opacity-20 cursor-not-allowed"
+                    : "cursor-pointer"
+                } ${
+                  isActive
+                    ? "bg-primary-6000 border-primary-6000 text-white hover:bg-primary-6000"
+                    : "border-slate-300 dark:border-slate-600 text-slate-900 dark:text-slate-200 hover:bg-neutral-50 dark:hover:bg-neutral-700"
+                }`}
+                onClick={() => {
+                  if (sizeOutStock) {
+                    return;
+                  }
+                  setSizeSelected(size);
+                }}
+              >
+                {size}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+  };
+
+  const renderStatus = () => {
+    if (!status) {
+      return null;
+    }
+    const CLASSES =
+      "absolute top-3 start-3 px-2.5 py-1.5 text-xs bg-white dark:bg-slate-900 nc-shadow-lg rounded-full flex items-center justify-center text-slate-700 text-slate-900 dark:text-slate-300";
+    if (status === "New in") {
+      return (
+        <div className={CLASSES}>
+          <SparklesIcon className="w-3.5 h-3.5" />
+          <span className="ms-1 leading-none">{status}</span>
+        </div>
+      );
+    }
+    if (status === "50% Discount") {
+      return (
+        <div className={CLASSES}>
+          <IconDiscount className="w-3.5 h-3.5" />
+          <span className="ms-1 leading-none">{status}</span>
+        </div>
+      );
+    }
+    if (status === "Sold Out") {
+      return (
+        <div className={CLASSES}>
+          <NoSymbolIcon className="w-3.5 h-3.5" />
+          <span className="ms-1 leading-none">{status}</span>
+        </div>
+      );
+    }
+    if (status === "limited edition") {
+      return (
+        <div className={CLASSES}>
+          <ClockIcon className="w-3.5 h-3.5" />
+          <span className="ms-1 leading-none">{status}</span>
+        </div>
+      );
+    }
+    return null;
+  };
+
+  const renderSectionContent = () => {
+    return (
+      <div className="space-y-8">
+        {/* ---------- 1 HEADING ----------  */}
+        <div>
+          <h2 className="text-2xl font-semibold hover:text-primary-6000 transition-colors">
+            <Link href="/product-detail">Heavy Weight Shoes</Link>
+          </h2>
+
+          <div className="flex justify-start rtl:justify-end items-center mt-5 space-x-4 sm:space-x-5 rtl:space-x-reverse">
+            {/* <div className="flex text-xl font-semibold">$112.00</div> */}
+            <Prices
+              contentClass="py-1 px-2 md:py-1.5 md:px-3 text-lg font-semibold"
+              price={3000}
+            />
+
+            <div className="h-6 border-s border-slate-300 dark:border-slate-700"></div>
+
+            <div className="flex items-center">
+              <Link
+                href="/product-detail"
+                className="flex items-center text-sm font-medium"
+              >
+                <StarIcon className="w-5 h-5 pb-[1px] text-yellow-400" />
+                <div className="ms-1.5 flex">
+                  <span>4.9</span>
+                  <span className="block mx-2">·</span>
+                  <span className="text-slate-600 dark:text-slate-400 underline">
+                    142 reviews
+                  </span>
+                </div>
+              </Link>
+              <span className="hidden sm:block mx-2.5">·</span>
+              <div className="hidden sm:flex items-center text-sm">
+                <SparklesIcon className="w-3.5 h-3.5" />
+                <span className="ms-1 leading-none">{status}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ---------- 3 VARIANTS AND SIZE LIST ----------  */}
+        <div className="">{renderVariants()}</div>
+        <div className="">{renderSizeList()}</div>
+
+      
+        <div className="flex flex-col">
+          <div className="mt-5 text-center">คุณกำลังตั้งขายสินค้าในราคา</div>
+         
+          <div className="text-5lx">
+            <input className="mt-1 py-5 bg-white text-center rounded-md p-2  focus:ring-sky-500 block w-full rounded-md sm:text-5xl focus:ring-1 border-none" placeholder="กรอกราคา" type="number" name="bidInput"/>
+          </div>
+          <div className="text-sm text-center">
+            <p className="">ราคาตั้งขายขั้นต่ำ ฿ 1,000</p></div>         
+        </div>
+                
+
+
+{/* {อัพโหลดรูปภาพสินค้า} */}
+<div className="my-2 py-5">
+       <label
+      className="bg-white text-gray-500 font-semibold text-base rounded max-w-md h-52 flex flex-col items-center justify-center cursor-pointer border-2 border-gray-300 border-dashed mx-auto font-[sans-serif]">
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-11 mb-2 fill-gray-500" viewBox="0 0 32 32">
+        <path
+          d="M23.75 11.044a7.99 7.99 0 0 0-15.5-.009A8 8 0 0 0 9 27h3a1 1 0 0 0 0-2H9a6 6 0 0 1-.035-12 1.038 1.038 0 0 0 1.1-.854 5.991 5.991 0 0 1 11.862 0A1.08 1.08 0 0 0 23 13a6 6 0 0 1 0 12h-3a1 1 0 0 0 0 2h3a8 8 0 0 0 .75-15.956z"
+          data-original="#000000" />
+        <path
+          d="M20.293 19.707a1 1 0 0 0 1.414-1.414l-5-5a1 1 0 0 0-1.414 0l-5 5a1 1 0 0 0 1.414 1.414L15 16.414V29a1 1 0 0 0 2 0V16.414z"
+          data-original="#000000" />
+      </svg>
+      อัพโหลดรูปภาพสินค้า
+
+      <input type="file" id='uploadFile1' className="hidden" />
+      <p className="text-xs font-medium text-gray-400 mt-2">ไฟล์ PNG หรือ JPG เท่านั้น</p>
+    </label>
+       </div>
+
+
+        {/*  ---------- 4  QTY AND ADD TO CART BUTTON */}
+        <div className="flex space-x-3.5 rtl:space-x-reverse">
+          <div className="flex items-center justify-center bg-slate-100/70 dark:bg-slate-800/70 px-2 py-3 sm:p-3.5 rounded-full">
+            <NcInputNumber
+              defaultValue={qualitySelected}
+              onChange={setQualitySelected}
+            />
+          </div>
+          {/* ปุ่ม ซื้อ */}
+          <ButtonPrimary
+            className="flex-1 flex-shrink-0"
+            onClick={notifyAddTocart}
+          >
+            <BagIcon className="hidden sm:inline-block w-5 h-5 mb-0.5" />
+            <span className="ms-3">ตั้งราคาซื้อ</span>
+          </ButtonPrimary>
+        </div>
+
+        {/*  */}
+        <hr className=" border-slate-200 dark:border-slate-700"></hr>
+        {/*  */}
+      
+       
+
+
+
+        <div className="">{renderDayList()}</div>
+      </div>
+    );
+  };
+
+  return (
+    <div className={`nc-ProductQuickView ${className}`}>
+      {/* MAIn */}
+      <div className="lg:flex">
+        {/* CONTENT */}
+        <div className="w-full lg:w-[50%] ">
+          {/* HEADING */}
+          <div className="relative">
+            <div className="aspect-w-16 aspect-h-16">
+              <Image
+                src={LIST_IMAGES_DEMO[0]}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="w-full rounded-xl object-cover"
+                alt="product detail 1"
+              />
+            </div>
+
+            {/* STATUS */}
+            {renderStatus()}
+            {/* META FAVORITES */}
+            <LikeButton className="absolute end-3 top-3 " />
+          </div>
+          <div className="hidden lg:grid grid-cols-2 gap-3 mt-3 sm:gap-6 sm:mt-6 xl:gap-5 xl:mt-5">
+            {[LIST_IMAGES_DEMO[1], LIST_IMAGES_DEMO[2]].map((item, index) => {
+              return (
+                <div key={index} className="aspect-w-3 aspect-h-4">
+                  <Image
+                    fill
+                    src={item}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="w-full rounded-xl object-cover"
+                    alt="product detail 1"
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* SIDEBAR */}
+        <div className="w-full lg:w-[50%] pt-6 lg:pt-0 lg:ps-7 xl:ps-8">
+          {renderSectionContent()}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ProductQuickView;
