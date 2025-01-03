@@ -11,7 +11,9 @@ import ButtonSecondary from "@/shared/Button/ButtonSecondary";
 import BagIcon from "./BagIcon";
 import toast from "react-hot-toast";
 import { Transition } from "@/app/headlessui";
-import ModalQuickView from "./ModalQuickViewOffer";
+import ModalQuickView from "./ModalQuickView";
+import ModalQuickViewOffer from "./ModalQuickViewOffer";
+
 import ProductStatus from "./ProductStatus";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -45,6 +47,7 @@ const ProductCard: FC<ProductCardProps> = ({
 
   const [variantActive, setVariantActive] = useState(0);
   const [showModalQuickView, setShowModalQuickView] = useState(false);
+  const [showModalQuickViewOffer, setShowModalQuickViewOffer] = useState(false);
   const router = useRouter();
 
   const notifyAddTocart = ({ size }: { size?: string }) => {
@@ -220,7 +223,7 @@ const ProductCard: FC<ProductCardProps> = ({
           className="shadow-lg"
           fontSize="text-xs"
           sizeClass="py-2 px-4"
-          onClick={() => setShowModalQuickView(true)}
+          onClick={() => setShowModalQuickViewOffer(true)}
         >
           <BagIcon className="w-3.5 h-3.5 mb-0.5" />
           <span className="ms-1">ขาย</span>
@@ -310,6 +313,10 @@ const ProductCard: FC<ProductCardProps> = ({
       <ModalQuickView
         show={showModalQuickView}
         onCloseModalQuickView={() => setShowModalQuickView(false)}
+      />
+      <ModalQuickViewOffer
+        show={showModalQuickViewOffer}
+        onCloseModalQuickView={() => setShowModalQuickViewOffer(false)}
       />
     </>
   );
