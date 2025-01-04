@@ -29,6 +29,7 @@ import Image from "next/image";
 import AccordionInfo from "@/components/AccordionInfo";
 import ModalQuickView from "@/components/ModalQuickView";
 import ButtonBid from "@/shared/Button/ButtonBid";
+import ModalQuickViewOffer from "@/components/ModalQuickViewOffer";
 
 const LIST_IMAGES_DEMO = [detail1JPG, detail2JPG, detail3JPG];
 
@@ -41,6 +42,7 @@ const ProductDetailPage = () => {
   const [isOpenModalViewAllReviews, setIsOpenModalViewAllReviews] =
     useState(false);
     const [showModalQuickView, setShowModalQuickView] = useState(false);
+    const [showModalQuickViewOffer, setShowModalQuickViewOffer] = useState(false);
 
   //
   const notifyAddTocart = () => {
@@ -287,7 +289,7 @@ const ProductDetailPage = () => {
         <div className="flex space-x-3.5"> 
         <ButtonPrimary
             className="flex-1 flex-shrink-0"
-            onClick={notifyAddTocart}
+            onClick={() => setShowModalQuickViewOffer(true)}
           >
             <BagIcon className="hidden sm:inline-block w-5 h-5 mb-0.5" />
             <span className="ml-3">ตั้งราคาขาย</span>
@@ -483,6 +485,10 @@ const ProductDetailPage = () => {
       <ModalQuickView
         show={showModalQuickView}
         onCloseModalQuickView={() => setShowModalQuickView(false)}
+      />
+      <ModalQuickViewOffer
+        show={showModalQuickViewOffer}
+        onCloseModalQuickView={() => setShowModalQuickViewOffer(false)}
       />
     </div>
   );
