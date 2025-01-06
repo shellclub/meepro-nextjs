@@ -98,7 +98,7 @@ export default function AvatarDropdown() {
                         </svg>
                       </div>
                       <div className="ml-4">
-                        <p className="text-sm font-medium ">{"My Account"}</p>
+                        <p className="text-sm font-medium ">{"บัญชีผู้ใช้"}</p>
                       </div>
                     </Link>
 
