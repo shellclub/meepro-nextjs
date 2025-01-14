@@ -320,27 +320,29 @@ const ProductDetailPage = () => {
   const renderDetailSection = () => {
     return (
       <div className="">
-        <h2 className="text-2xl font-semibold">Product Details</h2>
+        <h2 className="text-2xl font-semibold">รายละเอียดสินค้า</h2>
         <div className="prose prose-sm sm:prose dark:prose-invert sm:max-w-4xl mt-7">
           <p>
-            The patented eighteen-inch hardwood Arrowhead deck --- finely
-            mortised in, makes this the strongest and most rigid canoe ever
-            built. You cannot buy a canoe that will afford greater satisfaction.
+          !!! โปรดอ่าน !!!
+หากต้องการปกปิดกรุณาแจ้งในคำสั่งซื้อสินค้าครับส่งสินค้าทุกวัน ตัดรอบรับสินค้า 24.00 น.
+ตะกร้านี้คือสินค้าแบรนด์ Pramy ซุปแมว พร้อมสารอาหารที่ดี ขนาด 40 กร้ม 1 ซอง
+Pramy Broths พรามี่ น้ำซุปแมว ซุปครีม ซุปใส เพิ่มการทานน้ำให้แมว ขนาด 40 กรัม
+Grain-FreeGMO Free
           </p>
           <p>
-            The St. Louis Meramec Canoe Company was founded by Alfred Wickett in
-            1922. Wickett had previously worked for the Old Town Canoe Co from
-            1900 to 1914. Manufacturing of the classic wooden canoes in Valley
-            Park, Missouri ceased in 1978.
+          เนื้ออาหารออกแบบหลากหลาย ตอบโจทย์การกินน้ำเพิ่มขึ้นของน้องแมว มีให้เลือก 4 สูตรทั้ง
+ซุปครีม และ ซุปใส
           </p>
           <ul>
-            <li>Regular fit, mid-weight t-shirt</li>
-            <li>Natural color, 100% premium combed organic cotton</li>
+            <li>CS1 ครีมมี่ซุปกับไก่ฉีก แอลไลซีน เลขทะเบียนอาหารสัตว์ 01 09 67 0592</li>
+            <li>CS2 ครีมมี่ซุปกับทูน่าเฟลค คอลลาเจน
+            เลขทะเบียนอาหารสัตว์ 01 09 67 0515</li>
             <li>
-              Quality cotton grown without the use of herbicides or pesticides -
-              GOTS certified
+            CS3 ซุปใสกับไก่ฉีก ผักโขมและฟักทอง
+            เลขทะเบียนอาหารสัตว์ 01 09 67 0408
             </li>
-            <li>Soft touch water based printed in the USA</li>
+            <li>CS4 ซุปใสกับทูน่าเฟลค และแครนเบอร์รี่
+            เลขทะเบียนอาหารสัตว์ 01 09 67 0409</li>
           </ul>
         </div>
       </div>

@@ -13,7 +13,7 @@
     "@glidejs/glide": "^3.7.1",
     "@headlessui/react": "^2.2.0",
     "@heroicons/react": "^2.2.0",
-    "@prisma/client": "^6.1.0",
+    "@prisma/client": "^6.2.0",
     "@reduxjs/toolkit": "^2.5.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/forms": "^0.5.9",

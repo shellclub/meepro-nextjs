@@ -296,10 +296,10 @@
   resolved "https://registry.npmjs.org/@pkgjs/parseargs/-/parseargs-0.11.0.tgz"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
-"@prisma/client@^6.1.0":
-  version "6.1.0"
-  resolved "https://registry.npmjs.org/@prisma/client/-/client-6.1.0.tgz"
-  integrity sha512-AbQYc5+EJKm1Ydfq3KxwcGiy7wIbm4/QbjCKWWoNROtvy7d6a3gmAGkKjK0iUCzh+rHV8xDhD5Cge8ke/kiy5Q==
+"@prisma/client@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.npmjs.org/@prisma/client/-/client-6.2.0.tgz"
+  integrity sha512-tmEgej4OR+Wqk8MwZQcu58JzA1iFPmi/z7VPEmjTuTIQDLqHQZ6+MDRLL4wgNJXJkMHUKD9yMD5AkwYH0/0hKA==
 
 "@prisma/debug@6.1.0":
   version "6.1.0"
