@@ -5,8 +5,8 @@ import ButtonPrimary from "@/shared/Button/ButtonPrimary";
 import LikeButton from "@/components/LikeButton";
 import { StarIcon } from "@heroicons/react/24/solid";
 import BagIcon from "@/components/BagIcon";
-import NcInputNumber from "@/components/NcInputNumber";
 import { PRODUCTS } from "@/data/data";
+import { LineChart } from '@mui/x-charts/LineChart';
 import {
   NoSymbolIcon,
   ClockIcon,
@@ -320,6 +320,23 @@ const ProductDetailPage = () => {
   const renderDetailSection = () => {
     return (
       <div className="">
+      <div style={{ width: '100%', height: '400px' }}>
+<LineChart
+  xAxis={[{ data: [1, 2, 3,4, 5, 6,8, 10,12] }]}
+  series={[
+    {
+      data: [200, 789, 670, 899, 560, 990, 299],
+      area: true,
+    },
+  ]}
+  sx={{
+    width: '100%',
+    height: '100%',
+  }}
+/>
+</div>
+
+
         <h2 className="text-2xl font-semibold">รายละเอียดสินค้า</h2>
         <div className="prose prose-sm sm:prose dark:prose-invert sm:max-w-4xl mt-7">
           <p>
