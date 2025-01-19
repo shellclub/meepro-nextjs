@@ -7,7 +7,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model products {
+model Product_attributes {
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  attr_name String
+  size1     String
+  size2     String
+  @@map("product_attributes")
+}
+
+model Products {
   id               String   @id @default(auto()) @map("_id") @db.ObjectId
   attributes       String
   brand            String
@@ -32,4 +40,5 @@ model products {
   sku              String
   weight           String
   wholesale_price  String
+  @@map("products")
 }
