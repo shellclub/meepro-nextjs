@@ -1,8 +1,8 @@
-import prisma from "@/lib/db";
+// import prisma from "@/lib/db";
 
-export async function findAllProduct() {
-    return await prisma.products.findMany({
-        orderBy: {id:"desc"}
-    })
+// export async function findAllProduct() {
+//     return await prisma.products.findMany({
+//         orderBy: {id:"desc"}
+//     })
     
-}
+// }

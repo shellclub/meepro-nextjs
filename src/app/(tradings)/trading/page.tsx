@@ -1,12 +1,12 @@
 
 import HeaderTabNav from "@/components/HeaderTabNav";
-import { findAllProduct } from "../services/product-service";
+//import { findAllProduct } from "../services/product-service";
 import { Container } from "@mui/material";
 
 
 const  CartPage = async () => {
 
-  const products = await findAllProduct()
+  //const products = await findAllProduct()
 
   return (
     <div className="nc-CartPage">
@@ -15,9 +15,7 @@ const  CartPage = async () => {
           <h2 className="block text-2xl sm:text-3xl mb-5 lg:text-4xl font-semibold ">
             คำสั่งขาย
           </h2>
-          <Container>
-            <p>{JSON.stringify(products)}</p>
-          </Container>
+          
           
         <HeaderTabNav />
     
