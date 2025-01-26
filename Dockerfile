@@ -12,6 +12,7 @@ RUN npm install
 COPY . .
 
 # Build the Next.js application
+
 RUN npm run build
 
 # Use a minimal image to serve the built app
