@@ -7,7 +7,8 @@ import {
   Transition,
 } from "@/app/headlessui";
 import Prices from "@/components/Prices";
-import { Product, PRODUCTS } from "@/data/data";
+//import { Product, PRODUCTS } from "@/data/data";
+import { Product, PRODUCTS } from "@/data/product-data";
 import ButtonPrimary from "@/shared/Button/ButtonPrimary";
 import ButtonSecondary from "@/shared/Button/ButtonSecondary";
 import Image from "next/image";
@@ -15,14 +16,14 @@ import Link from "next/link";
 
 export default function CartDropdown() {
   const renderProduct = (item: Product, index: number, close: () => void) => {
-    const { name, price, image } = item;
+    const { product_name, price, main_image } = item;
     return (
       <div key={index} className="flex py-5 last:pb-0">
         <div className="relative h-24 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-slate-100">
           <Image
             fill
-            src={image}
-            alt={name}
+            src={main_image}
+            alt={product_name}
             className="h-full w-full object-contain object-center"
           />
           <Link
@@ -38,7 +39,7 @@ export default function CartDropdown() {
               <div>
                 <h3 className="text-base font-medium ">
                   <Link onClick={close} href={"/product-detail"}>
-                    {name}
+                    {product_name}
                   </Link>
                 </h3>
                 <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">

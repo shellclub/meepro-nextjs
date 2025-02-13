@@ -1,3 +1,5 @@
+
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -8,14 +10,13 @@ export interface Product {
   product_code: string;
   product_name: string;
   sku_id: string;
-  variation_value: string;
+  variation_value?: string;
   product_description: string
   price: number;
   main_image: string;
   seller_sku: string;
   parcel_weight: string;
   link: "/product-detail/";
-  variants?: string[];
   variantType?: "color" | "image";
   sizes?: string[];
   allOfSizes?: string[];
@@ -33,7 +34,7 @@ const useProducts = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/products") // เรียก API
+      .get("http://119.59.99.128:5001/api/v1/products") // เรียก API
       .then((res) => {
         setProducts(res.data); // เซ็ตข้อมูลที่ได้จาก API
         setLoading(false);

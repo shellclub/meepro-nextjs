@@ -1,12 +1,12 @@
-
+"use client"
 
 import React, { FC, useEffect, useState } from "react";
 import SectionSliderCollections from "@/components/SectionSliderLargeProduct";
 import SectionPromo1 from "@/components/SectionPromo1";
 import ProductCard from "@/components/ProductCard";
-import { PRODUCTS } from "@/data/data";
+//import { PRODUCTS } from "@/data/data";
 import SidebarFilters from "@/components/SidebarFilters";
-
+import PRODUCTS from "@/data/product-data"
 function PageCollection2(){
 
   return (
