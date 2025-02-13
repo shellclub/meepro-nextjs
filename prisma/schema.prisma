@@ -3,12 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model Product_attributes {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  id        Int @id @default(autoincrement())
   attr_name String
   size1     String
   size2     String
@@ -16,7 +16,7 @@ model Product_attributes {
 }
 
 model Products {
-  id               String   @id @default(auto()) @map("_id") @db.ObjectId
+  id               Int  @id @default(autoincrement())
   attributes       String
   brand            String
   business_number  String

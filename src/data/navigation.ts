@@ -185,7 +185,7 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
   },
   {
     id: ncNanoId(),
-    href: "/collection-2",
+    href: "/allproduct",
     name: "สินค้าทั้งหมด",
   },
   {
@@ -209,7 +209,7 @@ export const NAVIGATION_DEMO_2: NavItemType[] = [
   {
     id: ncNanoId(),
     href: "/search",
-    name: "เกี่ยว",
+    name: "เกี่ยวกับเรา",
     type: "dropdown",
     children: OTHER_PAGE_CHILD,
   },
