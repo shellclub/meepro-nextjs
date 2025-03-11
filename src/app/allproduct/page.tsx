@@ -6,7 +6,8 @@ import SectionPromo1 from "@/components/SectionPromo1";
 import ProductCard from "@/components/ProductCard";
 //import { PRODUCTS } from "@/data/data";
 import SidebarFilters from "@/components/SidebarFilters";
-import PRODUCTS from "@/data/product-data"
+import { PRODUCTS } from "@/data/data";
+
 function PageCollection2(){
 
   return (

@@ -4,8 +4,7 @@ import React, { FC, useState } from "react";
 import LikeButton from "./LikeButton";
 import Prices from "./Prices";
 import { ArrowsPointingOutIcon } from "@heroicons/react/24/outline";
-
-import { Product,PRODUCTS } from "@/data/product-data";
+import { Product, PRODUCTS } from "@/data/data";
 import { StarIcon } from "@heroicons/react/24/solid";
 import ButtonPrimary from "@/shared/Button/ButtonPrimary";
 import ButtonSecondary from "@/shared/Button/ButtonSecondary";
@@ -33,13 +32,13 @@ const ProductCard: FC<ProductCardProps> = ({
   isLiked,
 }) => {
   const {
-    product_name,
+    name,
     price,
-    product_description,
-    variation_value,
+    description,
+    variants,
     variantType,
     status,
-    main_image,
+    image,
     rating,
     id,
     numberOfReviews,
@@ -90,8 +89,8 @@ const ProductCard: FC<ProductCardProps> = ({
           <Image
             width={80}
             height={96}
-            src={main_image}
-            alt={product_name}
+            src={image}
+            alt={name}
             className="absolute object-cover object-center"
           />
         </div>
@@ -100,10 +99,10 @@ const ProductCard: FC<ProductCardProps> = ({
           <div>
             <div className="flex justify-between ">
               <div>
-                <h3 className="text-base font-medium ">{product_name}</h3>
+                <h3 className="text-base font-medium ">{name}</h3>
                 <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                   <span>
-                    {variants ? variants[variantActive].product_name : `Natural`}
+                    {variants ? variants[variantActive].name : `Natural`}
                   </span>
                   <span className="mx-2 border-s border-slate-200 dark:border-slate-700 h-4"></span>
                   <span>{size || "XL"}</span>
@@ -197,7 +196,7 @@ const ProductCard: FC<ProductCardProps> = ({
                 ? "border-black dark:border-slate-300"
                 : "border-transparent"
             }`}
-            title={variant.product_name}
+            title={variant.name}
           >
             <div
               className="absolute inset-0.5 rounded-full overflow-hidden z-0 bg-cover"
@@ -293,7 +292,7 @@ const ProductCard: FC<ProductCardProps> = ({
           {renderVariants()}
           <div>
             <h2 className="nc-ProductCard__title text-base font-semibold transition-colors">
-              {product_name}
+              {name}
             </h2>
             <p className={`text-sm text-slate-500 dark:text-slate-400 mt-1 `}>
               {description}
